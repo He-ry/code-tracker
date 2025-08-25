@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.ai.ollama.controller;
+package com.tracker.ollama.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ai.chat.client.ChatClient;
@@ -30,7 +30,7 @@ import reactor.core.publisher.Flux;
 
 
 @RestController
-@RequestMapping("/client/client")
+@RequestMapping("/ai")
 public class OllamaChatClientController {
 
 	private static final String DEFAULT_PROMPT = "你好，介绍下你自己！请用中文回答。";

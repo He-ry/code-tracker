@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.ai.ollama.controller;
+package com.tracker.ollama.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ai.chat.model.ChatModel;
