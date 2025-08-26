@@ -1,5 +1,6 @@
 package com.tracker.common.exception.handler;
 
+import cn.dev33.satoken.exception.NotLoginException;
 import com.tracker.common.domain.Result;
 import com.tracker.common.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,25 @@ import static com.tracker.common.exception.enums.StatusCodeEnum.*;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    /**
+     * 处理登录异常
+     */
+    @ExceptionHandler(value = NotLoginException.class)
+    public Result<?> handleLoginException(NotLoginException nle) {
+        String message = switch (nle.getType()) {
+            case NotLoginException.NOT_TOKEN -> "未能读取到有效 token";
+            case NotLoginException.INVALID_TOKEN -> "token 无效";
+            case NotLoginException.TOKEN_TIMEOUT -> "token 已过期";
+            case NotLoginException.BE_REPLACED -> "token 已被顶下线";
+            case NotLoginException.KICK_OUT -> "token 已被踢下线";
+            case NotLoginException.TOKEN_FREEZE -> "token 已被冻结";
+            case NotLoginException.NO_PREFIX -> "未按照指定前缀提交 token";
+            default -> "当前会话未登录";
+        };
+        return Result.fail(message);
+    }
+
 
     /**
      * 处理业务异常
