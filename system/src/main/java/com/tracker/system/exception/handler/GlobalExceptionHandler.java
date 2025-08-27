@@ -1,8 +1,8 @@
-package com.tracker.common.exception.handler;
+package com.tracker.system.exception.handler;
 
 import cn.dev33.satoken.exception.NotLoginException;
-import com.tracker.common.domain.Result;
-import com.tracker.common.exception.ServiceException;
+import com.tracker.system.domain.Result;
+import com.tracker.system.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.validation.ConstraintViolationException;
 import java.util.Objects;
 
-import static com.tracker.common.exception.enums.StatusCodeEnum.*;
+import static com.tracker.system.exception.enums.StatusCodeEnum.*;
 
 
 /**

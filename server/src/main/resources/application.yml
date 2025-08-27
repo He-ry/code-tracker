@@ -11,10 +11,18 @@ spring:
         model: qwen3:4b
   data:
     redis:
-      host: localhost
+      host: nas.hery.club
       port: 6379
       database: 0
-      password: password
+#      password: 508816739
+      lettuce:
+        lettuce:
+          pool:
+            max-active: 8
+            max-idle: 8
+            max-wait: -1
+            min-idle: 0s
+
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token:
   # token 名称（同时也是 cookie 名称）
