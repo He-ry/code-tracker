@@ -14,7 +14,7 @@ spring:
       host: nas.hery.club
       port: 6379
       database: 0
-#      password: 508816739
+      password: redis.hery
       lettuce:
         lettuce:
           pool:
