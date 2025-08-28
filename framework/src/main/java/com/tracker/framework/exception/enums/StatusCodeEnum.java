@@ -1,4 +1,4 @@
-package com.tracker.system.exception.enums;
+package com.tracker.framework.exception.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum StatusCodeEnum implements StatusCodeProvider{
+public enum StatusCodeEnum implements StatusCodeProvider {
     /**
      * 操作成功
      */

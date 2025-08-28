@@ -1,6 +1,7 @@
-package com.tracker.system.exception;
+package com.tracker.framework.exception;
 
-import static com.tracker.system.exception.enums.StatusCodeEnum.FAIL;
+
+import static com.tracker.framework.exception.enums.StatusCodeEnum.FAIL;
 
 public class ServiceException extends RuntimeException{
     /**

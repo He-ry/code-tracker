@@ -8,19 +8,16 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
-    <groupId>com.server</groupId>
     <artifactId>server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>tracker-server</name>
-    <description>tracker-server</description>
-    <properties>
-        <java.version>21</java.version>
-    </properties>
+    <version>1.0.0</version>
+    <name>${project.artifactId}</name>
+    <description>server</description>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.tracker</groupId>
-            <artifactId>ai</artifactId>
-            <version>1.0.0</version>
+            <artifactId>code-tracker</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

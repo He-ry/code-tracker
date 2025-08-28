@@ -1,4 +1,4 @@
-package com.tracker.system.config;
+package com.tracker.framework.config;
 
 import cn.dev33.satoken.interceptor.SaInterceptor;
 import cn.dev33.satoken.stp.StpUtil;

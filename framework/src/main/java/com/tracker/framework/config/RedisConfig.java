@@ -1,4 +1,4 @@
-package com.tracker.system.config;
+package com.tracker.framework.config;
 
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;

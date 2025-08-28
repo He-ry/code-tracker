@@ -8,10 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
-    <artifactId>system</artifactId>
+    <artifactId>framework</artifactId>
     <version>1.0.0</version>
     <name>${project.artifactId}</name>
-    <description>system</description>
+    <description>framework</description>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
@@ -20,5 +20,4 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 </project>
