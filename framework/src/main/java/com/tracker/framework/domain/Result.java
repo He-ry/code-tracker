@@ -1,4 +1,4 @@
-package com.tracker.system.domain;
+package com.tracker.framework.domain;
 
 
 import com.tracker.system.exception.enums.StatusCodeEnum;

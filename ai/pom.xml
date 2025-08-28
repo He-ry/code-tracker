@@ -13,4 +13,11 @@
 	<name>${project.artifactId}</name>
 	<description>ai</description>
 	<packaging>jar</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>com.tracker</groupId>
+			<artifactId>code-tracker</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>

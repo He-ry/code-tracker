@@ -1,4 +1,4 @@
-package com.tracker.system.exception.handler;
+package com.tracker.framework.exception.handler;
 
 import cn.dev33.satoken.exception.NotLoginException;
 import com.tracker.system.domain.Result;
