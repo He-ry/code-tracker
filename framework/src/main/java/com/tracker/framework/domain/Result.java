@@ -1,13 +1,14 @@
 package com.tracker.framework.domain;
 
 
-import com.tracker.system.exception.enums.StatusCodeEnum;
-import com.tracker.system.exception.enums.StatusCodeProvider;
+import com.tracker.framework.exception.enums.StatusCodeEnum;
+import com.tracker.framework.exception.enums.StatusCodeProvider;
 import lombok.Data;
 
 import java.io.Serializable;
 
-import static com.tracker.system.exception.enums.StatusCodeEnum.FAIL;
+import static com.tracker.framework.exception.enums.StatusCodeEnum.FAIL;
+
 
 /**
  * @author He
