@@ -17,6 +17,8 @@
 
 package com.tracker.ollama.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
@@ -31,6 +33,7 @@ import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/ai")
+@Tag(name = "AI聊天客户端", description = "基于Ollama的AI聊天客户端接口")
 public class OllamaChatClientController {
 
 	private static final String DEFAULT_PROMPT = "你好，介绍下你自己！请用中文回答。";
@@ -65,6 +68,7 @@ public class OllamaChatClientController {
 	 * ChatClient 简单调用
 	 */
 	@GetMapping("/simple/chat")
+	@Operation(summary = "简单聊天", description = "使用ChatClient进行简单的AI聊天")
 	public String simpleChat() {
 
 		return ollamaiChatClient.prompt(DEFAULT_PROMPT).call().content();
@@ -74,6 +78,7 @@ public class OllamaChatClientController {
 	 * ChatClient 流式调用
 	 */
 	@GetMapping("/stream/chat")
+	@Operation(summary = "流式聊天", description = "使用ChatClient进行流式的AI聊天，实现打字机效果")
 	public Flux<String> streamChat(HttpServletResponse response) {
 
 		response.setCharacterEncoding("UTF-8");

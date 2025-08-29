@@ -31,10 +31,6 @@ import java.util.Optional;
 /**
  * Swagger 自动配置类，基于 OpenAPI + Springdoc 实现。
  *
- * 友情提示：
- * 1. Springdoc 文档地址：<a href="https://github.com/springdoc/springdoc-openapi">仓库</a>
- * 2. Swagger 规范，于 2015 更名为 OpenAPI 规范，本质是一个东西
- *
  */
 @AutoConfiguration
 @ConditionalOnClass({OpenAPI.class})
@@ -102,17 +98,17 @@ public class SpringDocAutoConfiguration {
      */
     @Bean
     public GroupedOpenApi allGroupedOpenApi() {
-        return buildGroupedOpenApi("all", "");
+        return buildGroupedOpenApi("全部模块", "com.tracker");
     }
 
-    public static GroupedOpenApi buildGroupedOpenApi(String group) {
-        return buildGroupedOpenApi(group, group);
-    }
 
+    /**
+     * 所有模块的 API 分组
+     */
     public static GroupedOpenApi buildGroupedOpenApi(String group, String path) {
         return GroupedOpenApi.builder()
                 .group(group)
-                .pathsToMatch("/admin-api/" + path + "/**", "/app-api/" + path + "/**")
+                .packagesToScan(path)
                 .build();
     }
 
