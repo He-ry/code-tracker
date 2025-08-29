@@ -17,6 +17,8 @@
 
 package com.tracker.ollama.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
@@ -30,6 +32,7 @@ import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/model")
+@Tag(name = "AI聊天模型", description = "直接使用ChatModel的AI聊天接口")
 public class OllamaChatModelController {
 
     private static final String DEFAULT_PROMPT = "你好，介绍下你自己吧。请用中文回答。";
@@ -46,6 +49,7 @@ public class OllamaChatModelController {
      * @return String types.
      */
     @GetMapping("/simple/chat")
+    @Operation(summary = "简单模型聊天", description = "最简单的ChatModel使用方式，没有任何LLMs参数注入")
     public String simpleChat() {
 
         return ollamaChatModel.call(new Prompt(DEFAULT_PROMPT)).getResult().getOutput().getText();
@@ -57,6 +61,7 @@ public class OllamaChatModelController {
      * @return Flux<String> types.
      */
     @GetMapping("/stream/chat")
+    @Operation(summary = "流式模型聊天", description = "Stream流式调用，实现大模型输出的打字机效果")
     public Flux<String> streamChat(HttpServletResponse response) {
 
         // 避免返回乱码
@@ -71,6 +76,7 @@ public class OllamaChatModelController {
      * 优先级高于在 application.yml 中配置的 LLMs 参数！
      */
     @GetMapping("/custom/chat")
+    @Operation(summary = "自定义参数聊天", description = "使用编程方式自定义LLMs ChatOptions参数，优先级高于application.yml配置")
     public String customChat() {
 
         OllamaOptions customOptions = OllamaOptions.builder()

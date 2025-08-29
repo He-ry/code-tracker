@@ -5,8 +5,7 @@
     <parent>
         <groupId>com.tracker</groupId>
         <artifactId>code-tracker</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
+        <version>${revision}</version>
     </parent>
     <artifactId>server</artifactId>
     <version>1.0.0</version>
@@ -16,8 +15,18 @@
     <dependencies>
         <dependency>
             <groupId>com.tracker</groupId>
-            <artifactId>code-tracker</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>ai</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tracker</groupId>
+            <artifactId>framework</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tracker</groupId>
+            <artifactId>system</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 </project>
