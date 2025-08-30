@@ -17,6 +17,7 @@
 
 package com.tracker.ollama.controller;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
@@ -67,6 +68,7 @@ public class OllamaChatClientController {
 	/**
 	 * ChatClient 简单调用
 	 */
+	@SaIgnore
 	@GetMapping("/simple/chat")
 	@Operation(summary = "简单聊天", description = "使用ChatClient进行简单的AI聊天")
 	public String simpleChat() {
@@ -77,6 +79,7 @@ public class OllamaChatClientController {
 	/**
 	 * ChatClient 流式调用
 	 */
+	@SaIgnore
 	@GetMapping("/stream/chat")
 	@Operation(summary = "流式聊天", description = "使用ChatClient进行流式的AI聊天，实现打字机效果")
 	public Flux<String> streamChat(HttpServletResponse response) {

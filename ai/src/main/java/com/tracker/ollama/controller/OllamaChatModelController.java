@@ -17,6 +17,7 @@
 
 package com.tracker.ollama.controller;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
@@ -48,6 +49,7 @@ public class OllamaChatModelController {
      *
      * @return String types.
      */
+    @SaIgnore
     @GetMapping("/simple/chat")
     @Operation(summary = "简单模型聊天", description = "最简单的ChatModel使用方式，没有任何LLMs参数注入")
     public String simpleChat() {
@@ -60,6 +62,7 @@ public class OllamaChatModelController {
      *
      * @return Flux<String> types.
      */
+    @SaIgnore
     @GetMapping("/stream/chat")
     @Operation(summary = "流式模型聊天", description = "Stream流式调用，实现大模型输出的打字机效果")
     public Flux<String> streamChat(HttpServletResponse response) {
@@ -75,6 +78,7 @@ public class OllamaChatModelController {
      * 使用编程方式自定义 LLMs ChatOptions 参数， {@link OllamaOptions}。
      * 优先级高于在 application.yml 中配置的 LLMs 参数！
      */
+    @SaIgnore
     @GetMapping("/custom/chat")
     @Operation(summary = "自定义参数聊天", description = "使用编程方式自定义LLMs ChatOptions参数，优先级高于application.yml配置")
     public String customChat() {
