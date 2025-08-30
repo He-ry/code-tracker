@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class WebConfig {
+public class AiWebConfig {
 
     @Bean
     public GroupedOpenApi currentGroupedOpenApi() {
-        return SpringDocAutoConfiguration.buildGroupedOpenApi("ai", "com.tracker.ollama");
+        return SpringDocAutoConfiguration.buildGroupedOpenApi("ai", "com.tracker.ollama.controller");
     }
 }
