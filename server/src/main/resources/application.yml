@@ -16,7 +16,7 @@ spring:
       host: nas.hery.club
       port: 6379
       database: 0
-      password: redis
+      password: redis.hery
 
 
 # 配置接口文档
@@ -66,4 +66,4 @@ minio:
   endpoint: http://nas.hery.club:9000
   bucketName: code-tracker
   access-key: minio
-  secret-key: minio
+  secret-key: minio.hery
