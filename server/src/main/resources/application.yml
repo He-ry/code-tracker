@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: tracker-server
+  main:
+    allow-bean-definition-overriding: true
   ai:
     ollama:
       base-url: http://localhost:11434
@@ -14,14 +16,32 @@ spring:
       host: nas.hery.club
       port: 6379
       database: 0
-      password: redis.hery
-      lettuce:
-        lettuce:
-          pool:
-            max-active: 8
-            max-idle: 8
-            max-wait: -1
-            min-idle: 0s
+      password: redis
+
+
+# 配置接口文档
+springdoc:
+  swagger-ui:
+    path: /swagger-ui/index.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  # SpringDoc 配置属性
+  configs:
+    title: Code Tracker API文档
+    description: 代码记录接口文档
+    version: 1.0.0
+    author: Hery
+    url: https://github.com/code-tracker
+    email: admin@code-tracker.com
+    license: Apache License 2.0
+    license-url: https://www.apache.org/licenses/LICENSE-2.0
+knife4j:
+  enable: true
+logging:
+  level:
+    org.dromara.trans.listener.TransMessageListener: error
 
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token:
@@ -40,3 +60,10 @@ sa-token:
   # 是否输出操作日志
   is-log: true
 
+# Minio 配置
+
+minio:
+  endpoint: http://nas.hery.club:9000
+  bucketName: code-tracker
+  access-key: minio
+  secret-key: minio
