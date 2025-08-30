@@ -13,6 +13,5 @@
     <description>framework</description>
     <packaging>jar</packaging>
     <dependencies>
-        <!-- 这里可以添加framework特定的依赖 -->
     </dependencies>
 </project>
