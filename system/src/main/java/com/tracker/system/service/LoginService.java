@@ -11,6 +11,5 @@ public class LoginService {
     private UserService userService;
 
     public void login(LoginDTO loginDTO) {
-
     }
 }
