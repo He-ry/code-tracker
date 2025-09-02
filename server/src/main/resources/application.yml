@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: tracker-server
-  main:
-    allow-bean-definition-overriding: true
   ai:
     ollama:
       base-url: http://localhost:11434
@@ -17,7 +15,51 @@ spring:
       port: 6379
       database: 0
       password: redis.hery
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://nas.hery.club:3306/code-tracker?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: mysql.hery
 
+
+# 数据源
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true      # 驼峰映射
+    cache-enabled: false                     # 是否启用二级缓存
+    call-setters-on-nulls: true              # 对 null 字段调用 setter
+    lazy-loading-enabled: false              # 是否开启延迟加载
+    default-statement-timeout: 30            # SQL 超时（秒）
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 日志实现
+  # 全局配置
+  global-config:
+    banner: true                       # 是否打印 MyBatis-Plus LOGO
+    db-config:
+      id-type: ASSIGN_ID                     # 主键生成策略：AUTO, INPUT, ASSIGN_ID, ASSIGN_UUID, NONE
+      table-prefix: t_                  # 表名前缀
+      table-underline: true             # 开启下划线转驼峰
+      logic-delete-field: deleted       # 逻辑删除字段名
+      logic-delete-value: 1             # 已删除值
+      logic-not-delete-value: 0         # 未删除值
+# 自动建表
+auto-table:
+  enable: true
+  show-banner: true
+  model-package: com.tracker.*.domain.entity  # 指定实体类所在包路径
+  auto-build-database: true                   # 是否自动建表
+  init-data:
+    enable: true
+    base-path: classpath:sql
+  mysql:
+    table-default-charset: utf8mb4
+    table-default-collation: utf8mb4_general_ci
+    column-default-charset: utf8mb4
+    column-default-collation: utf8mb4_general_ci
+
+# 数据翻译
+easy-trans:
+  is-enable-global: true
+  is-enable-redis: false
 
 # 配置接口文档
 springdoc:
@@ -38,7 +80,7 @@ springdoc:
     license: Apache License 2.0
     license-url: https://www.apache.org/licenses/LICENSE-2.0
 knife4j:
-  enable: true
+  enable: false
 logging:
   level:
     org.dromara.trans.listener.TransMessageListener: error

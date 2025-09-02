@@ -1,4 +1,4 @@
-package com.tracker.framework.config;
+package com.tracker.framework.config.swagger;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;

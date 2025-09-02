@@ -1,4 +1,4 @@
-package com.tracker.framework.config;
+package com.tracker.framework.config.minio;
 
 import io.minio.MinioClient;
 import lombok.Data;

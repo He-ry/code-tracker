@@ -6,7 +6,6 @@
         <groupId>com.tracker</groupId>
         <artifactId>code-tracker</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>system</artifactId>
     <version>1.0.0</version>

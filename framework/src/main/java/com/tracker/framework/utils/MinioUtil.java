@@ -1,7 +1,7 @@
 package com.tracker.framework.utils;
 
 import cn.hutool.core.util.StrUtil;
-import com.tracker.framework.config.MinioConfig;
+import com.tracker.framework.config.minio.MinioConfig;
 import io.minio.*;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;

@@ -1,4 +1,4 @@
-package com.tracker.framework.config;
+package com.tracker.framework.config.swagger;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
