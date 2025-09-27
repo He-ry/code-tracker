@@ -11,15 +11,15 @@ spring:
         model: qwen3:4b
   data:
     redis:
-      host: nas.hery.club
+      host: nas.hery.cloud
       port: 6379
       database: 0
       password: redis.hery
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://nas.hery.club:3306/code-tracker?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://nas.hery.cloud:3306/code-tracker?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
-    password: mysql.hery
+    password:
 
 
 # 数据源
@@ -105,7 +105,7 @@ sa-token:
 # Minio 配置
 
 minio:
-  endpoint: http://nas.hery.club:9000
+  endpoint: http://nas.hery.cloud:9000
   bucketName: code-tracker
   access-key: minio
-  secret-key: minio.hery
+  secret-key:
