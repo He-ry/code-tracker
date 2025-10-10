@@ -101,9 +101,7 @@ public class WsServerEndpoint {
     @OnError
     public void onError(Session session, Throwable error) {
         String sid = session != null ? session.getId() : "unknown";
-
         log.error("WebSocket 错误, session:{} -> {}", sid, error.getMessage());
-
         // 清理会话
         if (session != null) {
             webSocketMap.remove(sid);

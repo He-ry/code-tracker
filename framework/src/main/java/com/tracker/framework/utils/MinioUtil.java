@@ -3,6 +3,10 @@ package com.tracker.framework.utils;
 import cn.hutool.core.util.StrUtil;
 import com.tracker.framework.config.minio.MinioConfig;
 import io.minio.*;
+import io.minio.errors.MinioException;
+import io.minio.messages.DeleteError;
+import io.minio.messages.DeleteObject;
+import io.minio.messages.Item;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
@@ -14,6 +18,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import javax.validation.constraints.NotNull;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 @Slf4j
 @Component
@@ -122,6 +128,61 @@ public class MinioUtil {
                 .object(objectName)
                 .build());
     }
+
+    /**
+     * 批量删除文件
+     */
+    public void deleteAllObjectsUnderPath(String bucketName, String prefix) {
+        try {
+            // 列出所有对象
+            Iterable<Result<Item>> results = minioClient.listObjects(
+                    ListObjectsArgs.builder()
+                            .bucket(bucketName)
+                            .prefix(prefix)
+                            .recursive(true)
+                            .build()
+            );
+
+            List<DeleteObject> objectsToDelete = new ArrayList<>();
+            for (Result<Item> result : results) {
+                objectsToDelete.add(new DeleteObject(result.get().objectName()));
+            }
+
+            if (objectsToDelete.isEmpty()) {
+                log.info("没有找到以 '{}' 为前缀的对象", prefix);
+                return;
+            }
+
+            // 批量删除对象
+            Iterable<Result<DeleteError>> errors = minioClient.removeObjects(
+                    RemoveObjectsArgs.builder()
+                            .bucket(bucketName)
+                            .objects(objectsToDelete)
+                            .build()
+            );
+
+            // 处理删除错误
+            int failCount = 0;
+            for (Result<DeleteError> errorResult : errors) {
+                try {
+                    DeleteError error = errorResult.get();
+                    log.error("删除失败: {}，原因: {}", error.objectName(), error.message());
+                    failCount++;
+                } catch (Exception e) {
+                    log.error("获取删除错误信息失败", e);
+                    failCount++;
+                }
+            }
+
+            log.info("尝试删除 {} 个对象, 失败 {} 个", objectsToDelete.size(), failCount);
+
+        } catch (MinioException e) {
+            log.error("MinIO 操作失败: {}", e.getMessage(), e);
+        } catch (Exception e) {
+            log.error("删除对象时发生异常: {}", e.getMessage(), e);
+        }
+    }
+
 
     /**
      * 下载文件
