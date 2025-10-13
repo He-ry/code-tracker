@@ -1,13 +1,16 @@
-package com.tracker.system.domain.entity;
+package com.tracker.system.models.entity;
 
 import com.tracker.framework.domain.pojo.BaseDO;
-import org.dromara.autotable.annotation.mysql.MysqlTypeConstant;
-import org.dromara.mpe.autotable.annotation.Column;
-import org.dromara.mpe.autotable.annotation.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 
 import java.time.LocalDateTime;
-
+@Builder
 @Table(value = "t_user", comment = "用户表")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDO extends BaseDO {
 
     @Column(value = "id", comment = "用户ID", type = MysqlTypeConstant.BIGINT, notNull = true)

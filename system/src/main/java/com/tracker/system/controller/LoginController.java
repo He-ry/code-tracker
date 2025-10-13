@@ -3,7 +3,7 @@ package com.tracker.system.controller;
 import cn.dev33.satoken.annotation.SaIgnore;
 import com.tracker.framework.domain.Result;
 import com.tracker.system.domain.dto.login.LoginDTO;
-import com.tracker.system.service.LoginService;
+import com.tracker.system.service.login.LoginService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
