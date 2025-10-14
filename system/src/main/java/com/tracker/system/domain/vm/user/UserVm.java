@@ -1,4 +1,4 @@
-package com.tracker.system.domain.vm;
+package com.tracker.system.domain.vm.user;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;

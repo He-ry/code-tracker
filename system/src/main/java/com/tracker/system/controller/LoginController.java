@@ -2,8 +2,11 @@ package com.tracker.system.controller;
 
 import cn.dev33.satoken.annotation.SaIgnore;
 import com.tracker.framework.domain.Result;
-import com.tracker.system.domain.dto.login.LoginDTO;
-import com.tracker.system.service.login.LoginService;
+import com.tracker.system.domain.dto.auth.LoginDTO;
+import com.tracker.system.domain.dto.auth.RegisterDTO;
+import com.tracker.system.domain.vm.auth.UserRegisterVm;
+import com.tracker.system.service.auth.AuthService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
@@ -12,17 +15,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "登录接口", description = "用户登录接口")
-@RestController
+@RestController("/api/auth")
 public class LoginController {
 
 
     @Resource
-    private LoginService loginService;
+    private AuthService authService;
 
     @SaIgnore
     @PostMapping("/login")
+    @Operation(summary = "登录")
     public Result<String> login(@RequestBody @Valid LoginDTO loginDTO) {
-        loginService.login(loginDTO);
+        authService.login(loginDTO);
         return Result.success("登录成功");
+    }
+
+    @SaIgnore
+    @PostMapping("/register")
+    @Operation(summary = "注册")
+    public Result<UserRegisterVm> register(@RequestBody @Valid RegisterDTO registerDTO) {
+        UserRegisterVm userRegisterVm = authService.register(registerDTO);
+        return Result.success(userRegisterVm);
     }
 }

@@ -20,11 +20,11 @@ import java.time.LocalDateTime;
 public class BaseDO implements Serializable, TransPojo {
 
     @TableField(fill = FieldFill.INSERT)
-    @AutoColumn(value = "created_by", comment = "创建人", type = MysqlTypeConstant.VARCHAR, length = 45, notNull = true)
+    @AutoColumn(value = "created_by", comment = "创建人", type = MysqlTypeConstant.VARCHAR, length = 45, notNull = true, defaultValue = "''")
     protected String createdBy;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    @AutoColumn(value = "updated_by", comment = "更新人", type = MysqlTypeConstant.VARCHAR, length = 45, notNull = true)
+    @AutoColumn(value = "updated_by", comment = "更新人", type = MysqlTypeConstant.VARCHAR, length = 45, notNull = true, defaultValue = "''")
     protected String updatedBy;
 
     @TableField(fill = FieldFill.INSERT)

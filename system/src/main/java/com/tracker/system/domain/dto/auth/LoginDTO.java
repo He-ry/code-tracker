@@ -1,4 +1,4 @@
-package com.tracker.system.domain.dto.login;
+package com.tracker.system.domain.dto.auth;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

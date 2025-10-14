@@ -7,7 +7,7 @@ import com.tracker.framework.domain.Result;
 import com.tracker.framework.domain.SortablePageParam;
 import com.tracker.system.domain.dto.user.UserListDTO;
 import com.tracker.system.domain.dto.user.UserSaveDTO;
-import com.tracker.system.domain.vm.UserVm;
+import com.tracker.system.domain.vm.user.UserVm;
 import com.tracker.system.models.entity.UserDO;
 import com.tracker.system.service.user.UserService;
 import io.swagger.v3.oas.annotations.Operation;

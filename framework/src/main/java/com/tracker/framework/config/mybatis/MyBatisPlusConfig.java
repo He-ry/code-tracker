@@ -74,10 +74,10 @@ public class MyBatisPlusConfig {
                 }
 
                 // 当前登录用户不为空，更新人为空，则当前登录用户为更新人
-                Object modifier = getFieldValByName("update_by", metaObject);
+                Object modifier = getFieldValByName("updated_by", metaObject);
                 Object userId = StpUtil.isLogin() ? StpUtil.getLoginId() : null;
                 if (Objects.nonNull(userId) && Objects.isNull(modifier)) {
-                    setFieldValByName("update_by", userId.toString(), metaObject);
+                    setFieldValByName("updated_by", userId.toString(), metaObject);
                 }
             }
         };
