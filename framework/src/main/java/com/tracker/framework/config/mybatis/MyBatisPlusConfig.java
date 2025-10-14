@@ -18,7 +18,7 @@ import java.util.Objects;
 @MapperScan(
         basePackages = "com.tracker",   // 扫描根包，递归扫描所有子模块下的 Mapper
         annotationClass = Mapper.class, // 只扫描加了 @Mapper 的接口
-        lazyInitialization =  "true"
+        lazyInitialization = "true"
 )
 public class MyBatisPlusConfig {
 
@@ -52,7 +52,7 @@ public class MyBatisPlusConfig {
                         baseDO.setUpdateTime(current);
                     }
 
-                    Object userId = StpUtil.getLoginId();
+                    Object userId = StpUtil.isLogin() ? StpUtil.getLoginId() : null;
 
                     // 当前登录用户不为空，创建人为空，则当前登录用户为创建人
                     if (Objects.nonNull(userId) && Objects.isNull(baseDO.getCreatedBy())) {
@@ -74,10 +74,10 @@ public class MyBatisPlusConfig {
                 }
 
                 // 当前登录用户不为空，更新人为空，则当前登录用户为更新人
-                Object modifier = getFieldValByName("updater", metaObject);
-                Object userId = StpUtil.getLoginId();
+                Object modifier = getFieldValByName("update_by", metaObject);
+                Object userId = StpUtil.isLogin() ? StpUtil.getLoginId() : null;
                 if (Objects.nonNull(userId) && Objects.isNull(modifier)) {
-                    setFieldValByName("updater", userId.toString(), metaObject);
+                    setFieldValByName("update_by", userId.toString(), metaObject);
                 }
             }
         };

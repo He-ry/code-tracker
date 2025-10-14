@@ -1,12 +1,12 @@
 package com.tracker.system.service.user;
 
-import java.util.*;
-
 import com.tracker.framework.domain.PageResult;
 import com.tracker.system.domain.dto.user.UserListDTO;
 import com.tracker.system.domain.dto.user.UserSaveDTO;
 import com.tracker.system.models.entity.UserDO;
-import jakarta.validation.*;
+import jakarta.validation.Valid;
+
+import java.util.List;
 
 /**
  * 用户 Service 接口
@@ -38,10 +38,10 @@ public interface UserService {
     void deleteUser(Long id);
 
     /**
-    * 批量删除用户
-    *
-    * @param ids 编号
-    */
+     * 批量删除用户
+     *
+     * @param ids 编号
+     */
     void deleteUserListByIds(List<Long> ids);
 
     /**
@@ -58,6 +58,6 @@ public interface UserService {
      * @param userListDTO 分页查询
      * @return 用户分页
      */
-    PageResult<?> getUserPage(UserListDTO userListDTO);
+    PageResult<UserDO> getUserPage(UserListDTO userListDTO);
 
 }

@@ -2,16 +2,16 @@ package com.tracker.system.service.user;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.tracker.framework.domain.PageResult;
-import com.tracker.framework.domain.Result;
 import com.tracker.framework.exception.ServiceException;
 import com.tracker.system.domain.dto.user.UserListDTO;
 import com.tracker.system.domain.dto.user.UserSaveDTO;
 import com.tracker.system.models.entity.UserDO;
 import com.tracker.system.models.mapper.UserMapper;
-import org.springframework.stereotype.Service;
 import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import java.util.*;
+
+import java.util.List;
 
 /**
  * 用户 Service 实现类
