@@ -34,7 +34,7 @@
         <mybatis-plus.version>3.5.12</mybatis-plus.version>
         <mybatis-plus-join.version>1.5.4</mybatis-plus-join.version>
         <dynamic-datasource.version>4.3.1</dynamic-datasource.version>
-        <auto-table.version>2.5.9</auto-table.version>
+        <autotable.version>2.5.9</autotable.version>
         <easy-trans.version>3.1.3</easy-trans.version>
         <easyexcel.version>4.0.3</easyexcel.version>
     </properties>
@@ -134,8 +134,8 @@
         <!--auto-table-->
         <dependency>
             <groupId>org.dromara.autotable</groupId>
-            <artifactId>auto-table</artifactId>
-            <version>${auto-table.version}</version>
+            <artifactId>auto-table-spring-boot-starter</artifactId>
+            <version>${autotable.version}</version>
         </dependency>
         <!-- VO 数据翻译 -->
         <dependency>

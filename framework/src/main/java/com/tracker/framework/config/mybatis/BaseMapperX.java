@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.baomidou.mybatisplus.extension.toolkit.Db;
 import com.github.yulichang.base.MPJBaseMapper;
-import com.tracker.framework.domain.Result;
+import com.tracker.framework.domain.PageResult;
 import com.tracker.framework.domain.SortablePageParam;
 import com.tracker.framework.domain.SortingField;
 import com.tracker.framework.utils.MyBatisUtils;
@@ -19,22 +19,22 @@ import java.util.List;
 
 public interface BaseMapperX<T> extends MPJBaseMapper<T> {
 
-    default Result<List<T>> selectPage(SortablePageParam pageParam, @Param("ew") Wrapper<T> queryWrapper) {
+    default PageResult<T> selectPage(SortablePageParam pageParam, @Param("ew") Wrapper<T> queryWrapper) {
         return selectPage(pageParam, pageParam.getSortingFields(), queryWrapper);
     }
 
-    default Result<List<T>> selectPage(SortablePageParam pageParam, Collection<SortingField> sortingFields, @Param("ew") Wrapper<T> queryWrapper) {
+    default PageResult<T> selectPage(SortablePageParam pageParam, Collection<SortingField> sortingFields, @Param("ew") Wrapper<T> queryWrapper) {
         // 特殊：不分页，直接查询全部
         if (SortablePageParam.PAGE_SIZE_NONE.equals(pageParam.getPageSize())) {
             MyBatisUtils.addOrder(queryWrapper, sortingFields);
             List<T> list = selectList(queryWrapper);
-            return Result.page(list, list.size());
+            return new PageResult<>(list, (long) list.size());
         }
         // MyBatis Plus 查询
         IPage<T> mpPage = MyBatisUtils.buildPage(pageParam, sortingFields);
         selectPage(mpPage, queryWrapper);
         // 转换返回
-        return Result.page(mpPage.getRecords(), mpPage.getTotal());
+        return new PageResult<>(mpPage.getRecords(), mpPage.getTotal());
     }
 
     default T selectOne(String field, Object value) {

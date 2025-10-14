@@ -1,5 +1,6 @@
 package com.tracker.system.domain.dto.user;
 
+import com.tracker.framework.domain.SortablePageParam;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -7,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Schema(description = "用户查询DTO")
 @Data
-public class UserListDTO {
+public class UserListDTO extends SortablePageParam {
 
     @Schema(description = "用户账号", example = "芋艿")
     private String username;

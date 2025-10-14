@@ -2,7 +2,7 @@ package com.tracker.system.service.user;
 
 import java.util.*;
 
-import com.tracker.framework.domain.Result;
+import com.tracker.framework.domain.PageResult;
 import com.tracker.system.domain.dto.user.UserListDTO;
 import com.tracker.system.domain.dto.user.UserSaveDTO;
 import com.tracker.system.models.entity.UserDO;
@@ -58,6 +58,6 @@ public interface UserService {
      * @param userListDTO 分页查询
      * @return 用户分页
      */
-    <T> Result<List<T>> getUserPage(UserListDTO userListDTO);
+    PageResult<?> getUserPage(UserListDTO userListDTO);
 
 }
