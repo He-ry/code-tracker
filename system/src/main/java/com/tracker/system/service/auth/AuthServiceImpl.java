@@ -18,10 +18,20 @@ public class AuthServiceImpl implements AuthService {
 
     @Resource
     private UserMapper userMapper;
-    
+
     @Override
     public void login(LoginDTO loginDTO) {
-
+        UserDO userDO = userMapper.selectOne(UserDO::getUsername, loginDTO.getUsername().trim());
+        if (userDO == null) {
+            throw new ServiceException("账号不存在！");
+        }
+        if (userDO.getStatus() == 0) {
+            throw new RuntimeException("账号已禁用");
+        }
+        if (!new BCryptPasswordEncoder().matches(loginDTO.getPassword(), userDO.getPassword().trim())) {
+            throw new ServiceException("密码错误！");
+        }
+        StpUtil.login(userDO.getId());
     }
 
     @Override
@@ -32,7 +42,7 @@ public class AuthServiceImpl implements AuthService {
         }
         userDO = UserDO.builder()
                 .username(registerDTO.getUsername())
-                .nickname(registerDTO.getNickname())
+                .nickname(registerDTO.getUsername())
                 .password(new BCryptPasswordEncoder().encode(registerDTO.getPassword()))
                 .status(1)
                 .build();

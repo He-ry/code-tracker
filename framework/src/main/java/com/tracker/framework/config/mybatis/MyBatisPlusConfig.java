@@ -57,10 +57,14 @@ public class MyBatisPlusConfig {
                     // 当前登录用户不为空，创建人为空，则当前登录用户为创建人
                     if (Objects.nonNull(userId) && Objects.isNull(baseDO.getCreatedBy())) {
                         baseDO.setCreatedBy(userId.toString());
+                    } else {
+                        baseDO.setCreatedBy("");
                     }
                     // 当前登录用户不为空，更新人为空，则当前登录用户为更新人
                     if (Objects.nonNull(userId) && Objects.isNull(baseDO.getUpdatedBy())) {
                         baseDO.setUpdatedBy(userId.toString());
+                    } else {
+                        baseDO.setUpdatedBy("");
                     }
                 }
             }

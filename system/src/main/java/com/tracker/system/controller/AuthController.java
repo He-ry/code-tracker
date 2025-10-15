@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "登录接口", description = "用户登录接口")
 @RestController("/api/auth")
-public class LoginController {
+public class AuthController {
 
 
     @Resource
