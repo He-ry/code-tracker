@@ -26,8 +26,8 @@ public class AuthController {
     @PostMapping("/login")
     @Operation(summary = "登录")
     public Result<String> login(@RequestBody @Valid LoginDTO loginDTO) {
-        authService.login(loginDTO);
-        return Result.success("登录成功");
+        String token = authService.login(loginDTO);
+        return Result.success(token);
     }
 
     @SaIgnore

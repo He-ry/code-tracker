@@ -7,11 +7,14 @@ import com.tracker.system.domain.dto.auth.RegisterDTO;
 import com.tracker.system.domain.vm.auth.UserRegisterVm;
 import com.tracker.system.models.entity.UserDO;
 import com.tracker.system.models.mapper.UserMapper;
+import com.tracker.system.utils.LoginUserUtil;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+@Slf4j
 @Service
 @Validated
 public class AuthServiceImpl implements AuthService {
@@ -20,7 +23,7 @@ public class AuthServiceImpl implements AuthService {
     private UserMapper userMapper;
 
     @Override
-    public void login(LoginDTO loginDTO) {
+    public String login(LoginDTO loginDTO) {
         UserDO userDO = userMapper.selectOne(UserDO::getUsername, loginDTO.getUsername().trim());
         if (userDO == null) {
             throw new ServiceException("账号不存在！");
@@ -32,6 +35,8 @@ public class AuthServiceImpl implements AuthService {
             throw new ServiceException("密码错误！");
         }
         StpUtil.login(userDO.getId());
+        LoginUserUtil.setCurrentUser(userDO);
+        return StpUtil.getTokenValue();
     }
 
     @Override

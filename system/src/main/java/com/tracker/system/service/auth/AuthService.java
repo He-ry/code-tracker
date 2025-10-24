@@ -12,7 +12,7 @@ public interface AuthService {
      *
      * @param loginDTO 登录参数
      */
-    void login(@Valid LoginDTO loginDTO);
+    String login(@Valid LoginDTO loginDTO);
 
 
     /**
