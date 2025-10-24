@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-@TableName(value = "menu")
-@AutoTable(value = "menu", comment = "菜单权限表", dialect = DatabaseDialect.MySQL)
+@TableName(value = "t_menu")
+@AutoTable(value = "t_menu", comment = "菜单权限表", dialect = DatabaseDialect.MySQL)
 @NoArgsConstructor
 @AllArgsConstructor
 public class MenuDO extends BaseDO {
