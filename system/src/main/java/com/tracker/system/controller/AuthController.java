@@ -43,6 +43,6 @@ public class AuthController {
     @Operation(summary = "登出")
     public Result<String> logout() {
         authService.logout();
-        return Result.success("退出成功！");
+        return Result.success("退出成功!");
     }
 }
