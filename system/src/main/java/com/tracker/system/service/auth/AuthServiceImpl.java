@@ -59,5 +59,11 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
+    @Override
+    public void logout() {
+        //多端登录只会退出当前用户
+        StpUtil.logout();
+    }
+
 
 }

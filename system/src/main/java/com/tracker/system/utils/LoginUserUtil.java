@@ -50,4 +50,8 @@ public class LoginUserUtil {
             StpUtil.getSession().set("user", user);
         }
     }
+
+    public static void removeCurrentUser() {
+        StpUtil.getSession().delete("user");
+    }
 }

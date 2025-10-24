@@ -22,4 +22,9 @@ public interface AuthService {
      * @return 注册结果
      */
     UserRegisterVm register(@Valid RegisterDTO registerDTO);
+
+    /**
+     * 登出
+     */
+    void logout();
 }
