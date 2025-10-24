@@ -1,8 +1,8 @@
 package com.tracker.system.service.userRole;
 
 import com.tracker.framework.domain.PageResult;
-import com.tracker.system.domain.dto.userRole.UserRoleListDTO;
-import com.tracker.system.domain.dto.userRole.UserRoleSaveDTO;
+import com.tracker.system.domain.dto.userrole.UserRoleListDTO;
+import com.tracker.system.domain.dto.userrole.UserRoleSaveDTO;
 import com.tracker.system.models.entity.UserRoleDO;
 import jakarta.validation.Valid;
 

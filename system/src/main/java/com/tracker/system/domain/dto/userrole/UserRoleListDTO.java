@@ -1,4 +1,4 @@
-package com.tracker.system.domain.dto.userRole;
+package com.tracker.system.domain.dto.userrole;
 
 import com.tracker.framework.domain.SortablePageParam;
 import io.swagger.v3.oas.annotations.media.Schema;

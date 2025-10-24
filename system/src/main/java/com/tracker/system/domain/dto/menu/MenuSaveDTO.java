@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Schema(description = "菜单新增/修改 Request VO")
 @Data
 public class MenuSaveDTO {
@@ -46,23 +44,4 @@ public class MenuSaveDTO {
     @Schema(description = "菜单图片")
     private String icon;
 
-    @Schema(description = "创建人", requiredMode = Schema.RequiredMode.REQUIRED)
-    @NotEmpty(message = "创建人不能为空")
-    private String createdBy;
-
-    @Schema(description = "更新人", requiredMode = Schema.RequiredMode.REQUIRED)
-    @NotEmpty(message = "更新人不能为空")
-    private String updatedBy;
-
-    @Schema(description = "创建时间", requiredMode = Schema.RequiredMode.REQUIRED)
-    @NotNull(message = "创建时间不能为空")
-    private LocalDateTime createTime;
-
-    @Schema(description = "更新时间", requiredMode = Schema.RequiredMode.REQUIRED)
-    @NotNull(message = "更新时间不能为空")
-    private LocalDateTime updateTime;
-
-    @Schema(description = "逻辑删除(0:未删除,1:已删除)", requiredMode = Schema.RequiredMode.REQUIRED)
-    @NotNull(message = "逻辑删除不能为空")
-    private Integer deleted;
 }

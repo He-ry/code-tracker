@@ -3,7 +3,7 @@ package com.tracker.system.models.mapper;
 import com.tracker.framework.config.mybatis.BaseMapperX;
 import com.tracker.framework.config.mybatis.LambdaQueryWrapperX;
 import com.tracker.framework.domain.PageResult;
-import com.tracker.system.domain.dto.userRole.UserRoleListDTO;
+import com.tracker.system.domain.dto.userrole.UserRoleListDTO;
 import com.tracker.system.models.entity.UserRoleDO;
 import org.apache.ibatis.annotations.Mapper;
 
