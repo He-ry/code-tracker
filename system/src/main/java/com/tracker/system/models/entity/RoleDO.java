@@ -12,8 +12,6 @@ import org.dromara.autotable.annotation.PrimaryKey;
 import org.dromara.autotable.annotation.mysql.MysqlTypeConstant;
 import org.dromara.autotable.core.constants.DatabaseDialect;
 
-import java.time.LocalDateTime;
-
 /**
  * 角色信息表
  */
@@ -53,18 +51,4 @@ public class RoleDO extends BaseDO {
     @AutoColumn(value = "remark", comment = "备注", type = MysqlTypeConstant.VARCHAR, length = 500)
     private String remark;
 
-    @AutoColumn(value = "createdBy", comment = "创建者", type = MysqlTypeConstant.VARCHAR, length = 64, defaultValue = "''")
-    private String createdBy;
-
-    @AutoColumn(value = "create_time", comment = "创建时间", type = MysqlTypeConstant.DATETIME, notNull = true, defaultValue = "CURRENT_TIMESTAMP")
-    private LocalDateTime createTime;
-
-    @AutoColumn(value = "updatedBy", comment = "更新者", type = MysqlTypeConstant.VARCHAR, length = 64, defaultValue = "''")
-    private String updatedBy;
-
-    @AutoColumn(value = "update_time", comment = "更新时间", type = MysqlTypeConstant.DATETIME, notNull = true, defaultValue = "CURRENT_TIMESTAMP")
-    private LocalDateTime updateTime;
-
-    @AutoColumn(value = "deleted", comment = "是否删除", type = MysqlTypeConstant.BIT, length = 1, notNull = true, defaultValue = "b'0'")
-    private Boolean deleted;
 }

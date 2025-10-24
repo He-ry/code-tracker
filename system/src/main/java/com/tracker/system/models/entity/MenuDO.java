@@ -13,8 +13,6 @@ import org.dromara.autotable.annotation.PrimaryKey;
 import org.dromara.autotable.annotation.mysql.MysqlTypeConstant;
 import org.dromara.autotable.core.constants.DatabaseDialect;
 
-import java.time.LocalDateTime;
-
 @Data
 @Builder
 @TableName(value = "t_menu")
@@ -55,18 +53,4 @@ public class MenuDO extends BaseDO {
     @AutoColumn(value = "icon", comment = "菜单图片", type = MysqlTypeConstant.VARCHAR, length = 45)
     private String icon;
 
-    @AutoColumn(value = "created_by", comment = "创建人", type = MysqlTypeConstant.VARCHAR, length = 45, notNull = true)
-    private String createdBy;
-
-    @AutoColumn(value = "updated_by", comment = "更新人", type = MysqlTypeConstant.VARCHAR, length = 45, notNull = true)
-    private String updatedBy;
-
-    @AutoColumn(value = "create_time", comment = "创建时间", type = MysqlTypeConstant.DATETIME, notNull = true)
-    private LocalDateTime createTime;
-
-    @AutoColumn(value = "update_time", comment = "更新时间", type = MysqlTypeConstant.DATETIME, notNull = true)
-    private LocalDateTime updateTime;
-
-    @AutoColumn(value = "deleted", comment = "逻辑删除(0:未删除,1:已删除)", type = MysqlTypeConstant.TINYINT, notNull = true)
-    private Boolean deleted;
 }
