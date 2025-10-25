@@ -1,6 +1,5 @@
 package com.tracker.system.controller;
 
-import cn.dev33.satoken.annotation.SaIgnore;
 import cn.hutool.core.bean.BeanUtil;
 import com.tracker.framework.domain.PageResult;
 import com.tracker.framework.domain.Result;
@@ -31,7 +30,6 @@ public class UserRoleController {
     @Resource
     private UserRoleService userRoleService;
 
-    @SaIgnore
     @PostMapping("/create")
     @Operation(summary = "创建用户角色关联")
     public Result<Long> createUserRole(@Valid @RequestBody UserRoleSaveDTO dto) {
@@ -61,13 +59,6 @@ public class UserRoleController {
         return Result.success(true);
     }
 
-    @GetMapping("/get")
-    @Operation(summary = "获得用户角色关联")
-    @Parameter(name = "id", description = "编号", required = true, example = "1024")
-    public Result<UserRoleVm> getUserRole(@RequestParam("id") Long id) {
-        UserRoleDO data = userRoleService.getUserRole(id);
-        return Result.success(BeanUtil.toBean(data, UserRoleVm.class));
-    }
 
     @GetMapping("/page")
     @Operation(summary = "获得用户角色关联分页")

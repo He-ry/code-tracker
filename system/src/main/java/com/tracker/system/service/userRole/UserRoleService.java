@@ -23,7 +23,5 @@ public interface UserRoleService {
 
     void deleteUserRoleListByIds(List<Long> ids);
 
-    UserRoleDO getUserRole(Long id);
-
     PageResult<UserRoleDO> getUserRolePage(UserRoleListDTO userRoleListDTO);
 }

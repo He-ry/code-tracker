@@ -27,6 +27,10 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Long createRole(RoleSaveDTO roleSaveDTO) {
+        RoleDO roleDO = roleMapper.selectFirstOne(RoleDO::getCode, roleSaveDTO.getCode());
+        if (roleDO != null) {
+            throw new ServiceException("角色已存在");
+        }
         RoleDO role = BeanUtil.toBean(roleSaveDTO, RoleDO.class);
         roleMapper.insert(role);
         return role.getId();

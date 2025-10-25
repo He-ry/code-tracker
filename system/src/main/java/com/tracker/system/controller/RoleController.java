@@ -1,6 +1,5 @@
 package com.tracker.system.controller;
 
-import cn.dev33.satoken.annotation.SaIgnore;
 import cn.hutool.core.bean.BeanUtil;
 import com.tracker.framework.domain.PageResult;
 import com.tracker.framework.domain.Result;
@@ -31,7 +30,6 @@ public class RoleController {
     @Resource
     private RoleService roleService;
 
-    @SaIgnore
     @PostMapping("/create")
     @Operation(summary = "创建角色")
     public Result<Long> createRole(@Valid @RequestBody RoleSaveDTO roleSaveDTO) {

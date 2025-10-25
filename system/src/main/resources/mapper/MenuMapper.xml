@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tracker.system.models.mapper.MenuMapper">
+
+    <!-- 根据用户ID查询权限 -->
+    <select id="selectPermissionsByUserId" parameterType="long" resultType="string">
+        SELECT DISTINCT m.permission
+        FROM t_user_role ur
+                 LEFT JOIN t_role_menu rm ON ur.role_id = rm.role_id
+                 LEFT JOIN t_menu m ON rm.menu_id = m.id
+        WHERE ur.user_id = #{userId}
+          AND m.permission IS NOT NULL
+    </select>
+
+</mapper>

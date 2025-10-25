@@ -1,6 +1,5 @@
 package com.tracker.system.controller;
 
-import cn.dev33.satoken.annotation.SaIgnore;
 import com.tracker.framework.domain.PageResult;
 import com.tracker.framework.domain.Result;
 import com.tracker.system.domain.dto.rolemenu.RoleMenuListDTO;
@@ -26,7 +25,6 @@ public class RoleMenuController {
     @Resource
     private RoleMenuService roleMenuService;
 
-    @SaIgnore
     @PostMapping("/create")
     @Operation(summary = "创建角色权限关联")
     public Result<String> createRoleMenu(@Valid @RequestBody RoleMenuSaveDTO dto) {

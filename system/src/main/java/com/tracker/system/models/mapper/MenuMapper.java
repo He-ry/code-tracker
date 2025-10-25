@@ -6,9 +6,21 @@ import com.tracker.framework.domain.PageResult;
 import com.tracker.system.domain.dto.menu.MenuListDTO;
 import com.tracker.system.models.entity.MenuDO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface MenuMapper extends BaseMapperX<MenuDO> {
+
+    /**
+     * 根据用户ID查询权限标识集合
+     *
+     * @param userId 用户ID
+     * @return 权限标识集合
+     */
+    List<String> selectPermissionsByUserId(@Param("userId") Long userId);
+
 
     default PageResult<MenuDO> selectPage(MenuListDTO menuListDTO) {
         return selectPage(menuListDTO, new LambdaQueryWrapperX<MenuDO>()

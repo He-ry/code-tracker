@@ -22,6 +22,7 @@ public class RoleMenuServiceImpl implements RoleMenuService {
 
     @Override
     public String createRoleMenu(RoleMenuSaveDTO dto) {
+        validateExists(dto.getRoleId(), dto.getMenuId());
         RoleMenuDO obj = BeanUtil.toBean(dto, RoleMenuDO.class);
         roleMenuMapper.insert(obj);
         return obj.getId();
@@ -29,14 +30,21 @@ public class RoleMenuServiceImpl implements RoleMenuService {
 
     @Override
     public void updateRoleMenu(RoleMenuSaveDTO dto) {
-        validateExists(dto.getId());
+        validateIdExists(dto.getId());
         RoleMenuDO updateObj = BeanUtil.toBean(dto, RoleMenuDO.class);
         roleMenuMapper.updateById(updateObj);
     }
 
+    private void validateIdExists(String id) {
+        RoleMenuDO roleMenuDO = roleMenuMapper.selectFirstOne(RoleMenuDO::getId, id);
+        if (roleMenuDO == null) {
+            throw new ServiceException("角色权限关联不存在");
+        }
+    }
+
     @Override
     public void deleteRoleMenu(String id) {
-        validateExists(id);
+        validateIdExists(id);
         roleMenuMapper.deleteById(id);
     }
 
@@ -45,9 +53,10 @@ public class RoleMenuServiceImpl implements RoleMenuService {
         roleMenuMapper.deleteByIds(ids);
     }
 
-    private void validateExists(String id) {
-        if (roleMenuMapper.selectById(id) == null) {
-            throw new ServiceException("角色权限关联不存在");
+    private void validateExists(String roleId, String menuId) {
+        RoleMenuDO roleMenuDO = roleMenuMapper.selectOne(RoleMenuDO::getRoleId, roleId, RoleMenuDO::getMenuId, menuId);
+        if (roleMenuDO != null) {
+            throw new ServiceException("角色权限关联已存在");
         }
     }
 

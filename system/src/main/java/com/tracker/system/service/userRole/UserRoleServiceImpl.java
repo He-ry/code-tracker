@@ -56,10 +56,6 @@ public class UserRoleServiceImpl implements UserRoleService {
         }
     }
 
-    @Override
-    public UserRoleDO getUserRole(Long id) {
-        return userRoleMapper.selectById(id);
-    }
 
     @Override
     public PageResult<UserRoleDO> getUserRolePage(UserRoleListDTO userRoleListDTO) {

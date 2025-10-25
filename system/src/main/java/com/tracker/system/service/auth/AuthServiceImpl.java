@@ -3,9 +3,12 @@ package com.tracker.system.service.auth;
 import cn.dev33.satoken.stp.StpUtil;
 import com.tracker.framework.exception.ServiceException;
 import com.tracker.system.domain.dto.auth.LoginDTO;
+import com.tracker.system.domain.dto.auth.LoginUser;
 import com.tracker.system.domain.dto.auth.RegisterDTO;
 import com.tracker.system.domain.vm.auth.UserRegisterVm;
 import com.tracker.system.models.entity.UserDO;
+import com.tracker.system.models.mapper.MenuMapper;
+import com.tracker.system.models.mapper.RoleMapper;
 import com.tracker.system.models.mapper.UserMapper;
 import com.tracker.system.utils.LoginUserUtil;
 import jakarta.annotation.Resource;
@@ -14,6 +17,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 @Service
 @Validated
@@ -21,6 +26,12 @@ public class AuthServiceImpl implements AuthService {
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+    private RoleMapper roleMapper;
+
+    @Resource
+    private MenuMapper menuMapper;
 
     @Override
     public String login(LoginDTO loginDTO) {
@@ -35,7 +46,13 @@ public class AuthServiceImpl implements AuthService {
             throw new ServiceException("密码错误！");
         }
         StpUtil.login(userDO.getId());
-        LoginUserUtil.setCurrentUser(userDO);
+        LoginUser loginUser = new LoginUser();
+        loginUser.setUser(userDO);
+        loginUser.setRoles(roleMapper.selectRoleCodesByUserId(userDO.getId()));
+        loginUser.setPermissions(menuMapper.selectPermissionsByUserId(userDO.getId()));
+        LoginUserUtil.setCurrentUser(loginUser);
+        userDO.setLoginDate(LocalDateTime.now());
+        userMapper.updateById(userDO);
         return StpUtil.getTokenValue();
     }
 

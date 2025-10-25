@@ -2,6 +2,7 @@ package com.tracker.system.utils;
 
 import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.stp.StpUtil;
+import com.tracker.system.domain.dto.auth.LoginUser;
 import com.tracker.system.models.entity.UserDO;
 
 /**
@@ -45,7 +46,7 @@ public class LoginUserUtil {
     /**
      * 更新当前Session中的用户信息
      */
-    public static void setCurrentUser(UserDO user) {
+    public static void setCurrentUser(LoginUser user) {
         if (StpUtil.isLogin()) {
             StpUtil.getSession().set("user", user);
         }

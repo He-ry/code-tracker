@@ -1,6 +1,5 @@
 package com.tracker.system.controller;
 
-import cn.dev33.satoken.annotation.SaIgnore;
 import com.tracker.framework.domain.PageResult;
 import com.tracker.framework.domain.Result;
 import com.tracker.system.domain.dto.menu.MenuListDTO;
@@ -26,7 +25,6 @@ public class MenuController {
     @Resource
     private MenuService menuService;
 
-    @SaIgnore
     @PostMapping("/create")
     @Operation(summary = "创建菜单")
     public Result<String> createMenu(@Valid @RequestBody MenuSaveDTO menuSaveDTO) {

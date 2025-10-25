@@ -44,8 +44,8 @@ public class UserSaveDTO {
     @Schema(description = "头像地址")
     private String avatar;
 
-    @Schema(description = "帐号状态（0正常 1停用）", requiredMode = Schema.RequiredMode.REQUIRED, example = "1")
-    @NotNull(message = "帐号状态（0正常 1停用）不能为空")
+    @Schema(description = "帐号状态（1正常 0停用）", requiredMode = Schema.RequiredMode.REQUIRED, example = "1")
+    @NotNull(message = "帐号状态（1正常 0停用）不能为空")
     private Integer status;
 
     @Schema(description = "最后登录IP")

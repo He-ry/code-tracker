@@ -31,7 +31,7 @@ public class RoleSaveDTO {
     @Schema(description = "数据范围部门ID数组")
     private String dataScopeDeptIds;
 
-    @Schema(description = "角色状态（0正常 1停用）", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(description = "角色状态（1正常 0停用）", requiredMode = Schema.RequiredMode.REQUIRED)
     @NotNull(message = "角色状态不能为空")
     private Integer status;
 
