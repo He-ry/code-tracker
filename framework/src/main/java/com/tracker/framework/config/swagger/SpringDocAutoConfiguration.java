@@ -30,12 +30,12 @@ import java.util.Optional;
 
 /**
  * Swagger 自动配置类，基于 OpenAPI + Springdoc 实现。
- *
  */
 @AutoConfiguration
 @ConditionalOnClass({OpenAPI.class})
 @EnableConfigurationProperties(SpringDocProperties.class)
-@ConditionalOnProperty(prefix = "springdoc.api-docs", name = "enabled", havingValue = "true", matchIfMissing = true) // 设置为 false 时，禁用
+@ConditionalOnProperty(prefix = "springdoc.api-docs", name = "enabled", havingValue = "true", matchIfMissing = true)
+// 设置为 false 时，禁用
 public class SpringDocAutoConfiguration {
 
     @Bean
@@ -69,9 +69,9 @@ public class SpringDocAutoConfiguration {
     private Map<String, SecurityScheme> buildSecuritySchemes() {
         Map<String, SecurityScheme> securitySchemes = new HashMap<>();
         SecurityScheme securityScheme = new SecurityScheme()
-                .type(SecurityScheme.Type.APIKEY) // 类型
-                .name(HttpHeaders.AUTHORIZATION) // 请求头的 name
-                .in(SecurityScheme.In.HEADER); // token 所在位置
+                .type(SecurityScheme.Type.APIKEY)
+                .name(HttpHeaders.AUTHORIZATION)
+                .in(SecurityScheme.In.HEADER);
         securitySchemes.put(HttpHeaders.AUTHORIZATION, securityScheme);
         return securitySchemes;
     }
