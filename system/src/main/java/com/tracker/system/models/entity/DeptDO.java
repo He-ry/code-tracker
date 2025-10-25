@@ -42,7 +42,7 @@ public class DeptDO extends BaseDO {
     @AutoColumn(value = "phone", comment = "联系电话", type = MysqlTypeConstant.VARCHAR, length = 11)
     private String phone;
 
-    @AutoColumn(value = "status", comment = "部门状态（0正常 1停用）", type = MysqlTypeConstant.TINYINT, notNull = true)
+    @AutoColumn(value = "status", comment = "部门状态（1正常 0停用）", type = MysqlTypeConstant.TINYINT, notNull = true)
     private Integer status;
 
 }
