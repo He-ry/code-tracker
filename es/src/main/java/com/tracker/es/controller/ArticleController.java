@@ -3,7 +3,7 @@ package com.tracker.es.controller;
 import com.tracker.es.domain.dto.ArticleListDTO;
 import com.tracker.es.domain.dto.ArticleSaveDTO;
 import com.tracker.es.models.entity.ArticleDO;
-import com.tracker.es.service.ArticleService;
+import com.tracker.es.service.article.ArticleService;
 import com.tracker.framework.domain.PageResult;
 import com.tracker.framework.domain.Result;
 import io.swagger.v3.oas.annotations.Operation;

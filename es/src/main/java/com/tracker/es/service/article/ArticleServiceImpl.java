@@ -1,4 +1,4 @@
-package com.tracker.es.service;
+package com.tracker.es.service.article;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.tracker.es.domain.dto.ArticleListDTO;

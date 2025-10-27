@@ -1,4 +1,4 @@
-package com.tracker.es.service;
+package com.tracker.es.service.article;
 
 import com.tracker.es.domain.dto.ArticleListDTO;
 import com.tracker.es.domain.dto.ArticleSaveDTO;
