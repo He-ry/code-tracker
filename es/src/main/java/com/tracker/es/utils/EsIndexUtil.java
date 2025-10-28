@@ -5,6 +5,7 @@ import co.elastic.clients.elasticsearch._types.mapping.Property;
 import co.elastic.clients.elasticsearch.indices.CreateIndexRequest;
 import co.elastic.clients.elasticsearch.indices.CreateIndexResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Map;
  * 适用于 ES 8.x 官方 Java Client
  */
 @Slf4j
+@Component
 public class EsIndexUtil {
 
     private final ElasticsearchClient client;
@@ -22,6 +24,19 @@ public class EsIndexUtil {
     public EsIndexUtil(ElasticsearchClient client) {
         this.client = client;
     }
+
+    /**
+     * 判断索引是否存在
+     */
+    public boolean indexExists(String indexName) {
+        try {
+            return client.indices().exists(e -> e.index(indexName)).value();
+        } catch (IOException e) {
+            log.error("Failed to check if index [{}] exists", indexName, e);
+            return false;
+        }
+    }
+
 
     /**
      * 创建索引
@@ -41,6 +56,28 @@ public class EsIndexUtil {
         }
     }
 
+    /**
+     * 删除索引
+     */
+    public boolean deleteIndex(String indexName) {
+        try {
+            // 检查索引是否存在
+            boolean exists = client.indices().exists(e -> e.index(indexName)).value();
+            if (!exists) {
+                log.warn("Index [{}] does not exist, skip delete.", indexName);
+                return false;
+            }
+
+            // 删除索引
+            client.indices().delete(d -> d.index(indexName));
+            log.info("Index [{}] deleted successfully.", indexName);
+            return true;
+
+        } catch (IOException e) {
+            log.error("Failed to delete index [{}]", indexName, e);
+            return false;
+        }
+    }
 
     /**
      * text 类型
@@ -160,4 +197,5 @@ public class EsIndexUtil {
     public static Map<String, Property> newProps() {
         return new HashMap<>();
     }
+
 }
