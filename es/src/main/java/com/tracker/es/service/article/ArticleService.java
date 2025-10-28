@@ -1,7 +1,7 @@
 package com.tracker.es.service.article;
 
-import com.tracker.es.domain.dto.ArticleListDTO;
-import com.tracker.es.domain.dto.ArticleSaveDTO;
+import com.tracker.es.domain.dto.article.ArticleListDTO;
+import com.tracker.es.domain.dto.article.ArticleSaveDTO;
 import com.tracker.es.models.entity.ArticleDO;
 import com.tracker.framework.domain.PageResult;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.tracker.es.domain.dto;
+package com.tracker.es.domain.dto.article;
 
 import com.tracker.framework.domain.SortablePageParam;
 import io.swagger.v3.oas.annotations.media.Schema;

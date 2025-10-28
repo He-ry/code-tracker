@@ -1,6 +1,6 @@
 package com.tracker.es.models.mapper;
 
-import com.tracker.es.domain.dto.ArticleListDTO;
+import com.tracker.es.domain.dto.article.ArticleListDTO;
 import com.tracker.es.models.entity.ArticleDO;
 import com.tracker.framework.config.mybatis.BaseMapperX;
 import com.tracker.framework.config.mybatis.LambdaQueryWrapperX;

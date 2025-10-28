@@ -1,8 +1,8 @@
 package com.tracker.es.service.article;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.tracker.es.domain.dto.ArticleListDTO;
-import com.tracker.es.domain.dto.ArticleSaveDTO;
+import com.tracker.es.domain.dto.article.ArticleListDTO;
+import com.tracker.es.domain.dto.article.ArticleSaveDTO;
 import com.tracker.es.models.entity.ArticleDO;
 import com.tracker.es.models.mapper.ArticleMapper;
 import com.tracker.framework.domain.PageResult;
