@@ -57,7 +57,7 @@ public class CanalClientService {
 
     private void run() {
         connector.connect();
-        connector.subscribe("code-tracker\\..*");
+        connector.subscribe(canalSubscribe);
         connector.rollback();
 
         while (true) {
