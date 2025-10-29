@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,22 +120,24 @@ public class CanalClientService {
                 case "comment_count" -> doc.setCommentCount(Integer.valueOf(value));
                 case "created_by" -> doc.setCreatedBy(value);
                 case "updated_by" -> doc.setUpdatedBy(value);
-                case "create_time" -> doc.setCreateTime(parseDateTime(value));
-                case "update_time" -> doc.setUpdateTime(parseDateTime(value));
+                case "create_time" -> doc.setCreateTime(value);
+                case "update_time" -> doc.setUpdateTime(value);
                 case "deleted" -> doc.setDeleted(value.equals("1") || value.equalsIgnoreCase("true"));
             }
         });
         return doc;
     }
 
+    private static final DateTimeFormatter DATETIME_FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     private LocalDateTime parseDateTime(String value) {
         if (value == null || value.isEmpty()) return null;
         try {
-            // 默认 ISO 格式 yyyy-MM-ddTHH:mm:ss
-            return LocalDateTime.parse(value);
+            return LocalDateTime.parse(value, DATETIME_FORMATTER);
         } catch (Exception e) {
             log.warn("解析时间失败: {}", value, e);
-            return null;
+            return LocalDateTime.now();
         }
     }
 
