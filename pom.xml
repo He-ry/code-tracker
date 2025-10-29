@@ -39,7 +39,7 @@
         <easyexcel.version>4.0.3</easyexcel.version>
         <validation.version>8.0.1.Final</validation.version>
         <elasticsearch.version>8.15.0</elasticsearch.version>
-        <cancal.version>1.1.4</cancal.version>
+        <cancal.version>1.1.8</cancal.version>
     </properties>
     <dependencies>
         <!-- redis -->
@@ -175,6 +175,11 @@
         <dependency>
             <groupId>com.alibaba.otter</groupId>
             <artifactId>canal.client</artifactId>
+            <version>${cancal.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.otter</groupId>
+            <artifactId>canal.protocol</artifactId>
             <version>${cancal.version}</version>
         </dependency>
         <dependency>
