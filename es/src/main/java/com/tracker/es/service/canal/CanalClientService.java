@@ -50,21 +50,22 @@ public class CanalClientService {
     @PostConstruct
     public void start() {
         connector = CanalConnectors.newSingleConnector(
-                new InetSocketAddress(canalHost, 11111), canalDestination, canalUsername, canalPassword
+                new InetSocketAddress(canalHost, canalPort), canalDestination, canalUsername, canalPassword
         );
         Thread.startVirtualThread(this::run);
     }
 
     private void run() {
         connector.connect();
-        connector.subscribe(canalSubscribe);
+        connector.subscribe("code-tracker\\..*");
         connector.rollback();
 
         while (true) {
-            Message message = connector.get(1000); // 拉取1000条binlog
+            // 拉取1000条binlog
+            Message message = connector.get(1000);
             List<CanalEntry.Entry> entries = message.getEntries();
             if (entries.isEmpty()) continue;
-
+            log.info("拉取到{}条binlog", entries.size());
             List<ArticleDocument> batchInsertUpdateList = new ArrayList<>();
             List<String> batchDeleteList = new ArrayList<>();
 
