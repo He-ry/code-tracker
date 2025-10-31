@@ -21,15 +21,22 @@ public class ElasticSearchController {
 
     @PostMapping("/create")
     @Operation(summary = "创建索引")
-    public Result<String> createIndex() {
+    public Result<Boolean> createIndex() {
         boolean index = elasticSearchService.createIndex();
-        return index ? Result.success("创建索引成功") : Result.fail("创建索引失败");
+        return Result.success(index);
     }
 
     @DeleteMapping("/delete")
     @Operation(summary = "删除索引")
-    public Result<String> deleteIndex(@RequestParam String indexName) {
+    public Result<Boolean> deleteIndex(@RequestParam String indexName) {
         boolean index = elasticSearchService.deleteIndex(indexName);
-        return index ? Result.success("删除索引成功") : Result.fail("删除索引失败");
+        return Result.success(index);
+    }
+
+    @PostMapping("/sync")
+    @Operation(summary = "同步数据")
+    public Result<String> syncData(@RequestParam(required = false, defaultValue = "10000") Integer pageSize) {
+        elasticSearchService.syncData(pageSize);
+        return Result.success();
     }
 }

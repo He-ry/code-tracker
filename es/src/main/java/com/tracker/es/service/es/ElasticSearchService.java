@@ -15,4 +15,9 @@ public interface ElasticSearchService {
      * @return true 删除成功
      */
     boolean deleteIndex(String indexName);
+
+    /**
+     * 同步数据
+     */
+    void syncData(Integer pageSize);
 }

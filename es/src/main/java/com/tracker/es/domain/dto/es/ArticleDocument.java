@@ -20,6 +20,9 @@ public class ArticleDocument {
     @Schema(description = "文章标题")
     private String title;
 
+    @Schema(description = "文章标题拼音")
+    private String titlePinyin;
+
     @Size(max = 255)
     @Schema(description = "文章副标题")
     private String subtitle;
@@ -34,11 +37,17 @@ public class ArticleDocument {
     @Schema(description = "作者")
     private String author;
 
+    @Schema(description = "作者拼音")
+    private String authorPinyin;
+
     @Schema(description = "标签，逗号分隔")
     private String tags;
 
     @Schema(description = "文章类别")
     private String category;
+
+    @Schema(description = "分类拼音")
+    private String categoryPinyin;
 
     @Schema(description = "状态 0草稿 1发布")
     private Integer status;
