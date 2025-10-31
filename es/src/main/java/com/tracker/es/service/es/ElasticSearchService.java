@@ -7,7 +7,6 @@ public interface ElasticSearchService {
      */
     boolean createIndex();
 
-
     /**
      * 删除索引
      *

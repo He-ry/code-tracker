@@ -56,7 +56,7 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
         props.put("title_pinyin", Property.of(p -> p.text(t -> t.analyzer("pinyin"))));
 
         // 副标题
-        esUtil.addTextProperty(props, "subtitle", "ik_max_word");
+        esUtil.addTextProperty(props, "subTitle", "ik_max_word");
 
         // 正文内容
         esUtil.addTextProperty(props, "content", "ik_max_word");
@@ -85,17 +85,17 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
         esUtil.addIntegerProperty(props, "status");
 
         // 计数字段
-        esUtil.addIntegerProperty(props, "view_count");
-        esUtil.addIntegerProperty(props, "like_count");
-        esUtil.addIntegerProperty(props, "comment_count");
+        esUtil.addIntegerProperty(props, "viewCount");
+        esUtil.addIntegerProperty(props, "likeCount");
+        esUtil.addIntegerProperty(props, "commentCount");
 
         // 创建/更新人
-        esUtil.addKeywordProperty(props, "created_by");
-        esUtil.addKeywordProperty(props, "updated_by");
+        esUtil.addKeywordProperty(props, "createdBy");
+        esUtil.addKeywordProperty(props, "updatedBy");
 
         // 时间字段
-        esUtil.addDateProperty(props, "create_time", "yyyy-MM-dd HH:mm:ss");
-        esUtil.addDateProperty(props, "update_time", "yyyy-MM-dd HH:mm:ss");
+        esUtil.addDateProperty(props, "createTime", "yyyy-MM-dd HH:mm:ss");
+        esUtil.addDateProperty(props, "updateTime", "yyyy-MM-dd HH:mm:ss");
 
         // 逻辑删除
         esUtil.addBooleanProperty(props, "deleted");
