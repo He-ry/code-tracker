@@ -1,5 +1,9 @@
 package com.tracker.es.service.es;
 
+import com.tracker.es.domain.dto.es.ArticleDocument;
+import com.tracker.es.domain.dto.es.ElasticSearchDto;
+import com.tracker.framework.domain.PageResult;
+
 public interface ElasticSearchService {
 
     /**
@@ -19,4 +23,12 @@ public interface ElasticSearchService {
      * 同步数据
      */
     void syncData(Integer pageSize);
+
+
+    /**
+     * 搜索
+     *
+     * @param elasticSearchDto 搜索参数
+     */
+    PageResult<ArticleDocument> search(ElasticSearchDto elasticSearchDto);
 }

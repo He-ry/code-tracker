@@ -1,6 +1,9 @@
 package com.tracker.es.controller;
 
+import com.tracker.es.domain.dto.es.ArticleDocument;
+import com.tracker.es.domain.dto.es.ElasticSearchDto;
 import com.tracker.es.service.es.ElasticSearchService;
+import com.tracker.framework.domain.PageResult;
 import com.tracker.framework.domain.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -39,4 +42,12 @@ public class ElasticSearchController {
         elasticSearchService.syncData(pageSize);
         return Result.success();
     }
+
+    @PostMapping("/search")
+    @Operation(summary = "搜索")
+    public Result<PageResult<ArticleDocument>> search(@RequestBody ElasticSearchDto elasticSearchDto) {
+        PageResult<ArticleDocument> res = elasticSearchService.search(elasticSearchDto);
+        return Result.success(res);
+    }
+
 }
